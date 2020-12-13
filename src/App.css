@@ -1,5 +1,10 @@
 .App {
-  text-align: center;
+  
+  
+  min-width: 100vh;
+  
+  min-height: 100vh;
+  
 }
 
 .App-logo {
@@ -9,7 +14,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 50s linear;
   }
 }
 
@@ -17,7 +22,7 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -35,4 +40,129 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+.sent{
+     
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  
+  
+}
+.received{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.you{
+  background-color: rgb(255, 217, 90);
+  padding: 5px;
+  border-radius: 5px 5px 5px;
+  min-height: 20px ;
+  min-width: 100px;
+  margin-top: 3px ;
+  margin-right: 5px ;
+}
+
+.theOthers{
+  background-color: rgb(54, 54, 54);
+  color: white ;
+  padding: 5px;
+  border-radius: 5px 5px 5px;
+  display: flex;
+  align-items:center;
+  flex-direction:column;
+  min-height: 20px ;
+  min-width: 100px;
+  margin-top: 3px ;
+  margin-left: 5px ;
+}
+
+.header{
+  background-color: #000000;
+  font-family: 'Russo One', sans-serif;
+  margin: 0px;
+}
+
+
+
+  .tchatbox{
+    min-height: max-content;
+    height: max-content;
+    
+  }
+ 
+
+  .tchatbox{
+    min-height: max-content;
+    height: max-content;
+    
+  }
+  .formeiks{
+    
+    line-height: 1.5;
+    width: 80% ;
+    font-size: 1.5rem;
+    background: rgb(58, 58, 58);
+    color: white;
+    border: none;
+    
+    margin-bottom: 10px;
+    border-radius: 50px 50px 50px;
+    font-family: 'Russo One', sans-serif;  
+  }
+  .send
+  {
+    background-color: rgb(0, 0, 0);
+    border: unset;
+    width: 10%;
+    outline: none;
+    
+    font-size: 2.5rem;
+    color: rgb(255, 229, 82);
+    text-align: center;
+    margin-left: 30px ;
+    padding: 10px;
+    padding-top: 0px;
+    
+  }
+  .formex{
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    display: flex;
+    padding-top: 10px;
+    font-size: 1.5rem;
+    
+  }
+
+.body{
+  background-color: rgb(59, 59, 59);
+}
+
+.signIn{
+  position: absolute ;
+  top: 35vh;
+  
+}
+
+@media screen and (max-width: 1024px)
+{
+  .body{
+    
+  }
+  .formex{
+    padding-top: 0px;
+    padding-bottom: 70px;
+  }
+
+}
+h1{
+  font-family: 'Russo One', sans-serif;     
 }
