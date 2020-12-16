@@ -51,13 +51,13 @@ const ChatRoom = () => {
         }      
         
     }
-    
+    messages && messages.reverse()
    
     return (
       <div className="col-sm-12  p-0" style={{maxHeight : '90vh' , minHeight : '87vh'}}>
         <main className="tchatbox">
           
-          {messages && messages.reverse().map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
+          {messages && messages.map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
           <div ref={dummy}></div>
         </main>
         <div className="row formex">
