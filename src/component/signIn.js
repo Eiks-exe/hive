@@ -25,10 +25,6 @@ const signIn = ()=> {
         const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider)
       }
-      const signInWithEmail = () => {
-        const emailProvider = new firebase.auth.EmailAuthProvider();
-        auth.signInWithEmailAndPassword(emailProvider)
-      }
     return (
         <Container className="col-sm-6 signIn">
       <div className="rounded bg-dark shadow-lg">
