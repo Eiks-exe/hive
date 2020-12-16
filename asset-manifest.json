@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/hive/static/css/main.6f5c5253.chunk.css",
+    "main.js": "/hive/static/js/main.5f0cdb98.chunk.js",
+    "main.js.map": "/hive/static/js/main.5f0cdb98.chunk.js.map",
+    "runtime-main.js": "/hive/static/js/runtime-main.47b5d051.js",
+    "runtime-main.js.map": "/hive/static/js/runtime-main.47b5d051.js.map",
+    "static/js/2.996c7587.chunk.js": "/hive/static/js/2.996c7587.chunk.js",
+    "static/js/2.996c7587.chunk.js.map": "/hive/static/js/2.996c7587.chunk.js.map",
+    "static/js/3.8910f0fb.chunk.js": "/hive/static/js/3.8910f0fb.chunk.js",
+    "static/js/3.8910f0fb.chunk.js.map": "/hive/static/js/3.8910f0fb.chunk.js.map",
+    "index.html": "/hive/index.html",
+    "service-worker.js": "/hive/service-worker.js",
+    "service-worker.js.map": "/hive/service-worker.js.map",
+    "static/css/main.6f5c5253.chunk.css.map": "/hive/static/css/main.6f5c5253.chunk.css.map",
+    "static/js/2.996c7587.chunk.js.LICENSE.txt": "/hive/static/js/2.996c7587.chunk.js.LICENSE.txt",
+    "static/media/logo.2d27ead7.svg": "/hive/static/media/logo.2d27ead7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.47b5d051.js",
+    "static/js/2.996c7587.chunk.js",
+    "static/css/main.6f5c5253.chunk.css",
+    "static/js/main.5f0cdb98.chunk.js"
+  ]
+}
