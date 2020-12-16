@@ -66,6 +66,7 @@
   min-width: 100px;
   margin-top: 3px ;
   margin-right: 5px ;
+  font-size: 1.5rem;
 }
 
 .theOthers{
@@ -89,58 +90,62 @@
 }
 
 
+.formeiks{
+  height: 3rem ;
+  background: rgb(58, 58, 58);
+  color: white;
+  border: none;
+  width: 100%;
+  max-width: 95vw ;
+  padding: 20px;
+  border-radius: 50px 50px 50px ;
+  font-size: 1.5rem;
+}
+.send
+{
+  background-color: rgb(0, 0, 0);
+  border: unset;
+  outline: none;
+  font-size: 2.5rem;
+  color: rgb(255, 229, 82);
+  padding:0px;
+  height:0 ;
+  border: none;
+  outline:none;
+}
 
-  .tchatbox{
-    min-height: max-content;
-    height: max-content;
-    
-  }
- 
+.formex{
+  height: 5rem;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 15px ;
+  display: flex;
+  justify-content: center ;
+  flex-direction: column;
+}
 
-  .tchatbox{
-    min-height: max-content;
-    height: max-content;
-    
-  }
-  .formeiks{
-    
-    line-height: 1.5;
-    width: 80% ;
-    font-size: 1.5rem;
-    background: rgb(58, 58, 58);
-    color: white;
-    border: none;
-    
-    margin-bottom: 10px;
-    border-radius: 50px 50px 50px;
-    font-family: 'Russo One', sans-serif;  
-  }
-  .send
-  {
-    background-color: rgb(0, 0, 0);
-    border: unset;
-    width: 10%;
-    outline: none;
-    
-    font-size: 2.5rem;
-    color: rgb(255, 229, 82);
-    text-align: center;
-    margin-left: 30px ;
-    padding: 10px;
-    padding-top: 0px;
-    
-  }
-  .formex{
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    display: flex;
-    padding-top: 10px;
-    font-size: 1.5rem;
-    
-  }
+main {
+  padding: 10px;
+  height: 86vh;
+  
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+main::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+main::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #4a7570b2;
+}
 
 .body{
   background-color: rgb(59, 59, 59);
@@ -152,17 +157,27 @@
   
 }
 
+h1{
+  font-family: 'Russo One', sans-serif;     
+}
+
+.button{
+  background-color: rgb(255, 229, 82);
+  font-size: 1.5rem;
+  border-radius: 10px ;
+  padding: 5px ;
+}
 @media screen and (max-width: 1024px)
 {
   .body{
     
   }
   .formex{
-    padding-top: 0px;
-    padding-bottom: 70px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  .formeiks{
+    max-width: 150vw ;
   }
 
-}
-h1{
-  font-family: 'Russo One', sans-serif;     
 }
