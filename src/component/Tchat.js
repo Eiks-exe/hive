@@ -7,7 +7,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-
+import { DBWrapper } from 'workbox-core/_private';
 
 
 if (!firebase.apps.length) {
@@ -30,8 +30,8 @@ const ChatRoom = () => {
 
     const dummy = useRef() ;
     const messagesRef = firestore.collection("Messages")
-    const query = messagesRef.orderBy('createdAt').limit(25);
-    const [messages] = useCollectionData(query, {idField: 'id'});
+    const query = messagesRef.orderBy('createdAt');
+    const [messages] = useCollectionData(query, { idField: 'id'});
     const [formValue, setFormValue] = useState('');
   
     const sendMessage = async(e) => {
@@ -56,8 +56,10 @@ const ChatRoom = () => {
             name,
             email
           });
+          
           setFormValue('');
           dummy.current.scrollIntoView({behavior : 'smooth'})
+         
         }      
         
     }
