@@ -128,6 +128,7 @@
 
 main {
   padding: 10px;
+  padding-bottom: 40px;
   height: 86vh;
   
   overflow-y: scroll;
