@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
-import { Col, Container, FormGroup, Row, Form, FormControl} from 'react-bootstrap';
+import { Col, Container} from 'react-bootstrap';
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -19,7 +19,6 @@ if (!firebase.apps.length) {
   }
 
 const auth = firebase.auth();
-const firestore = firebase.firestore();
 
 const signIn = ()=> {
     const signInWithGoogle = () => {

@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import {GiArtificialHive, GiPschentDoubleCrown} from 'react-icons/gi' ;
-import { Col, Container, FormGroup, Row, Form, FormControl} from 'react-bootstrap';
-import { AiOutlineLogin, AiOutlineLogout, AiOutlineSend } from 'react-icons/ai';
-import { FcGoogle } from "react-icons/fc";
+import {GiArtificialHive} from 'react-icons/gi' ;
+
+import {  AiOutlineLogout } from 'react-icons/ai';
+
 
 import React from 'react';
 import SignIn  from './component/signIn';
@@ -14,8 +13,7 @@ import 'firebase/firestore';
 import 'firebase/firebase-auth'
 
 import {useAuthState} from 'react-firebase-hooks/auth';
-import {useCollectionData} from 'react-firebase-hooks/firestore';
-import { useState } from 'react';
+
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -31,7 +29,6 @@ if (!firebase.apps.length) {
 }
 
 const auth = firebase.auth();
-const firestore = firebase.firestore();
 
 
 function App() {

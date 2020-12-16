@@ -3,25 +3,11 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
 
-import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-import { DBWrapper } from 'workbox-core/_private';
 
 
-if (!firebase.apps.length) {
-    firebase.initializeApp({
-      apiKey: "AIzaSyDTWBteXw0tA7hZ0OQCJmzl8q_6lcK18Jc",
-      authDomain: "hive-db3b9.firebaseapp.com",
-      projectId: "hive-db3b9",
-      storageBucket: "hive-db3b9.appspot.com",
-      messagingSenderId: "306107300911",
-      appId: "1:306107300911:web:42ab214d27d522768bdada",
-      measurementId: "G-H9W71X85WS"
-    })
-  
-  }
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
@@ -30,10 +16,12 @@ const ChatRoom = () => {
 
     const dummy = useRef() ;
     const messagesRef = firestore.collection("Messages")
-    const query = messagesRef.orderBy('createdAt');
+    const query = messagesRef.orderBy('createdAt' ,'desc').limit(50);
     const [messages] = useCollectionData(query, { idField: 'id'});
     const [formValue, setFormValue] = useState('');
-  
+
+    
+    
     const sendMessage = async(e) => {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
@@ -64,11 +52,12 @@ const ChatRoom = () => {
         
     }
     
-  
+    messages && messages.reverse()
     
     return (
       <div className="col-sm-12  p-0" style={{maxHeight : '90vh' , minHeight : '87vh'}}>
         <main className="tchatbox">
+          
           {messages && messages.map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
           <div ref={dummy}></div>
         </main>
