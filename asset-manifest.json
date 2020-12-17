@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/hive/static/css/main.86015eb5.chunk.css",
-    "main.js": "/hive/static/js/main.976cbd64.chunk.js",
-    "main.js.map": "/hive/static/js/main.976cbd64.chunk.js.map",
+    "main.js": "/hive/static/js/main.76f84651.chunk.js",
+    "main.js.map": "/hive/static/js/main.76f84651.chunk.js.map",
     "runtime-main.js": "/hive/static/js/runtime-main.47b5d051.js",
     "runtime-main.js.map": "/hive/static/js/runtime-main.47b5d051.js.map",
     "static/js/2.4b87d899.chunk.js": "/hive/static/js/2.4b87d899.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.47b5d051.js",
     "static/js/2.4b87d899.chunk.js",
     "static/css/main.86015eb5.chunk.css",
-    "static/js/main.976cbd64.chunk.js"
+    "static/js/main.76f84651.chunk.js"
   ]
 }
