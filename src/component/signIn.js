@@ -30,9 +30,6 @@ const signIn = ()=> {
       <div className="rounded bg-dark shadow-lg">
         <Col className="col">
           <div className="row justify-content-center text-white rounded-top" style={{backgroundColor:'black'}}>
-            
-             
-            
             <h1 className=""> log in </h1>
           </div>
                

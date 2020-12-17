@@ -16,7 +16,7 @@ const ChatRoom = () => {
 
     const dummy = useRef() ;
     const messagesRef = firestore.collection("Messages")
-    const query = messagesRef.orderBy('createdAt' ,'desc');
+    const query = messagesRef.orderBy('createdAt' ,'desc').limit(25);
     const [messages] = useCollectionData(query, { idField: 'id'});
     const Cmessages = messages ;
     const [formValue, setFormValue] = useState('');
@@ -25,7 +25,6 @@ const ChatRoom = () => {
     
     const sendMessage = async(e) => {
         e.stopPropagation();
-        e.nativeEvent.stopImmediatePropagation();
         e.preventDefault()
         
         const user = auth.currentUser ;
