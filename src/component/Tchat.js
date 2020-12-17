@@ -18,6 +18,7 @@ const ChatRoom = () => {
     const messagesRef = firestore.collection("Messages")
     const query = messagesRef.orderBy('createdAt' ,'desc').limit(50);
     const [messages] = useCollectionData(query, { idField: 'id'});
+    const Cmessages = messages ;
     const [formValue, setFormValue] = useState('');
 
     
@@ -47,17 +48,16 @@ const ChatRoom = () => {
           
           setFormValue('');
           dummy.current.scrollIntoView({behavior : 'smooth'})
-         
         }      
         
     }
-    messages && messages.reverse()
+    Cmessages && Cmessages.reverse()
    
     return (
       <div className="col-sm-12  p-0" style={{maxHeight : '90vh' , minHeight : '87vh'}}>
         <main className="tchatbox">
           
-          {messages && messages.map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
+          {Cmessages && Cmessages.map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
           <div ref={dummy}></div>
         </main>
         <div className="row formex">
