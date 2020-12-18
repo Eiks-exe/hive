@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
-import { Col, Container} from 'react-bootstrap';
 import { FcGoogle } from "react-icons/fc";
+import { Button, Card, CardContent, Grid, makeStyles, TextField, Typography, Box, Divider, List, ListItem } from '@material-ui/core';
+import { useState } from 'react';
+
 
 
 if (!firebase.apps.length) {
@@ -18,30 +20,99 @@ if (!firebase.apps.length) {
   
   }
 
+
+
 const auth = firebase.auth();
 
-const signIn = ()=> {
-    const signInWithGoogle = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider)
-      }
+const SignInStyle = makeStyles((theme) =>({
+  root:{
+    display: 'flex',
+    alignItems:'center',
+    flexDirection: 'column',
+    width: '100%',
+    background: 'linear-gradient(45deg, #F0D050 30%, #FF8E53 90%)',
+    fontFamily: 'Russo One, sans-serif',
+  },
+  content :{
+    width: '100%',
+    padding: 0,
+  },
+  textCenter: {
+    margin:'auto',
+  },
+  button : {
+    background: 'linear-gradient(45deg, #324764 60%, #939FA2 90%)' ,
+    color: 'white',
+    '&:focus': {
+      outline: 'none',
+    },
+  },
+  form : {
+    background: '#f0d050',
+  }
+
+}));
+
+const SignIn = ()=> {
+  const classes = SignInStyle()
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  
+  const signInWithEmail = async(e) => {
+    
+    e.stopPropagation();
+    e.preventDefault();
+
+    auth.createUserWithEmailAndPassword(`${username}@hive.bee`, password)
+      .then((user) => {
+        
+      })
+      .catch((error)=> {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      })
+  }
     return (
-        <Container className="col-sm-6 signIn">
-      <div className="rounded bg-dark shadow-lg">
-        <Col className="col">
-          <div className="row justify-content-center text-white rounded-top" style={{backgroundColor:'black'}}>
-            <h1 className=""> log in </h1>
-          </div>
-               
-          <Col className="d-flex justify-content-center m-0 p-5">
-            <button onClick={signInWithGoogle} className="btn btn-primary ml-2 mb-2 text-center"><FcGoogle/> Sign in with Google</button>
-          </Col>
+      <Grid container justify='center' style={{margin:'auto'}}>
+        <Grid item xs={12} sm={10} md={8} lg={6} xl={4} >
+        <Card className={classes.root}>
+          <CardContent className={classes.content}>
+          <List className={classes.content}>
+              <ListItem>
+              <Typography component="h1" variant="h2" className={classes.textCenter}>
+                Hive
+                </Typography >
+              </ListItem>
+              <ListItem>
+              <Typography component="h2" variant="subtitle1" className={classes.textCenter}>
+                login
+                </Typography>
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <form onSubmit={signInWithEmail} style={{ width: '100%' }}>
+                <Grid container direction="column" className={classes.details} spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField name="username" fullWidth variant="outlined" className={classes.form} value={username} onChange={(e) => setUsername(e.target.value)}   />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField name="password" fullWidth type="password" variant="outlined"  className={classes.form} value={password} onChange={(e) => setPassword(e.target.value)} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button className={classes.button}>
+                      Sign in
+                    </Button>
+                  </Grid>
 
-        </Col>
-
-      </div>
-    </Container>
+                </Grid>
+              </form>
+            </ListItem>
+            </List>
+          </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     )
 }
 
-export default signIn ;
+export default SignIn ;

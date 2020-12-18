@@ -5,6 +5,7 @@
   
   min-height: 100vh;
   
+  display: flex;
 }
 
 .App-logo {
@@ -19,7 +20,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #d2d9e7;
   min-height: 100vh;
   display: flex;
   flex-direction: column; 
@@ -59,7 +60,7 @@
 }
 
 .you{
-  background-color: rgb(255, 217, 90);
+  background-color: #fff238;
   padding: 5px;
   border-radius: 5px 5px 5px;
   min-height: 20px ;
@@ -84,7 +85,7 @@
 }
 
 .header{
-  background-color: #000000;
+  background-color: #d4d4d4;
   font-family: 'Russo One', sans-serif;
   margin: 0px;
 }
@@ -149,7 +150,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 .body{
-  background-color: rgb(59, 59, 59);
+  
 }
 
 .signIn{

@@ -1,5 +1,5 @@
 import './App.css';
-import {GiArtificialHive} from 'react-icons/gi' ;
+import {GiArtificialHive, GiFlexibleLamp} from 'react-icons/gi' ;
 
 import {  AiOutlineLogout } from 'react-icons/ai';
 
@@ -8,11 +8,19 @@ import React from 'react';
 import SignIn  from './component/signIn';
 import ChatRoom from './component/Tchat';
 
+
+
+
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
 
 import {useAuthState} from 'react-firebase-hooks/auth';
+
+import { FormControl, ThemeProvider } from 'react-bootstrap';
+import  { yellow , black } from "@material-ui/core/colors"
+import  Button  from "@material-ui/core/Button";
+import { Box, Container, createMuiTheme, Grid, MuiThemeProvider, makeStyles, TextField, Card } from '@material-ui/core';
 
 
 if (!firebase.apps.length) {
@@ -27,29 +35,45 @@ if (!firebase.apps.length) {
   })
 
 }
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+
+const useStyles = makeStyles({
+  root: {
+    background: '#212F42',
+    color: 'white',
+    minHeight : '100vh' ,
+    display: 'flex',
+    
+  },
+  
+});
+
 
 const auth = firebase.auth();
 
 
 function App() {
   const [user] = useAuthState(auth) ;
-  
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="header d-flex justify-content-between flex-row shadow-lg">
-        <SignOut />
-        
-        <h1 className="text-white">Hive <small className="text-muted version">(v.1)</small> </h1>
-        <h1  className="text-white"><GiArtificialHive/></h1>
-      </header>
-      
-      <div className="h-100" style={{}} >
-            {user ? <ChatRoom/> : <SignIn/>}
-      </div>
-      <footer>
-        
-      </footer>
-    </div>
+    <Box className={classes.root}>
+      <SignIn/>  
+    </Box>
   );
 }
 
