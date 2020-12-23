@@ -1,15 +1,9 @@
 import './App.css';
-import {GiArtificialHive, GiFlexibleLamp} from 'react-icons/gi' ;
-
 import {  AiOutlineLogout } from 'react-icons/ai';
-
 
 import React from 'react';
 import SignIn  from './component/signIn';
 import ChatRoom from './component/Tchat';
-
-
-
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -17,10 +11,9 @@ import 'firebase/firebase-auth'
 
 import {useAuthState} from 'react-firebase-hooks/auth';
 
-import { FormControl, ThemeProvider } from 'react-bootstrap';
-import  { yellow , black } from "@material-ui/core/colors"
 import  Button  from "@material-ui/core/Button";
-import { Box, Container, createMuiTheme, Grid, MuiThemeProvider, makeStyles, TextField, Card } from '@material-ui/core';
+import { Grid, makeStyles, Box} from '@material-ui/core';
+
 
 
 if (!firebase.apps.length) {
@@ -35,22 +28,6 @@ if (!firebase.apps.length) {
   })
 
 }
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
 
 const useStyles = makeStyles({
   root: {
@@ -58,8 +35,16 @@ const useStyles = makeStyles({
     color: 'white',
     minHeight : '100vh' ,
     display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
     
   },
+  button :{
+    background : 'linear-gradient(45deg, #F0D050 30%, #FF8E53 90%)',
+    '&:hover' : {
+      background : 'linear-gradient(45deg, #324764 60%, #939FA2 90%)',
+    }
+  }
   
 });
 
@@ -68,24 +53,43 @@ const auth = firebase.auth();
 
 
 function App() {
-  const [user] = useAuthState(auth) ;
+  var [user] = useAuthState(auth) ;
   const classes = useStyles();
+  const queryString = window.location.search;
+  const urlParam = new URLSearchParams(queryString);
+  
   return (
     <Box className={classes.root}>
-      <SignIn/>  
+      <SignOut/>
+      <Grid>
+        {user? <ChatRoom/> : <SignIn/>}
+        {urlParam.has('test') && <Visit/>}
+      </Grid>
     </Box>
+    
   );
 }
 
-
 function SignOut() {
+  const classes = useStyles();
   return auth.currentUser && (
-    
-      <button onClick={() => auth.signOut()} className="m-2 button "><AiOutlineLogout/> Sign Out</button>
+    <header className="">
+      <Button varient="" onClick={() => auth.signOut()} className={classes.button}><AiOutlineLogout/> Sign Out</Button>
+    </header>
   )
 }
 
-
+function Visit(){
+  var [user] = useAuthState(auth) ;
+  const Tech = async ()=>{
+    auth.signInAnonymously();
+  } 
+  return(
+    <Box>
+      {user && <Tech/>}
+    </Box>
+  )
+}
 
 
 export default App;
