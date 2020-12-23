@@ -1,8 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
-import { FcGoogle } from "react-icons/fc";
-import { Button, Card, CardContent, Grid, makeStyles, TextField, Typography, Box, Divider, List, ListItem } from '@material-ui/core';
+import { Button, Card, CardContent, Grid, makeStyles, TextField, Typography, Divider, List, ListItem } from '@material-ui/core';
 import { useState } from 'react';
 
 
@@ -59,19 +58,45 @@ const SignIn = ()=> {
   const [username, setUsername] = useState('');
   
   const signInWithEmail = async(e) => {
-    
     e.stopPropagation();
     e.preventDefault();
 
-    auth.createUserWithEmailAndPassword(`${username}@hive.bee`, password)
-      .then((user) => {
-        
-      })
-      .catch((error)=> {
+    auth.signInWithEmailAndPassword(`${username}@hive.bee`, password)
+        .then((user)=>{
+
+        })
+        .catch((error)=> {
         var errorCode = error.code;
         var errorMessage = error.message;
+        if (errorCode === 'auth/wrong-password') {
+          alert('Wrong password.');
+        } else {
+          alert(errorMessage);
+        }
       })
+    setPassword('');
   }
+  
+  const SignUp = async(e)=> {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    auth.createUserWithEmailAndPassword(`${username}@hive.bee`, password)
+      .then((user)=>{
+        
+      })
+      .catch((error)=>{
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+    })
+    setPassword('');
+   }
+  
     return (
       <Grid container justify='center' style={{margin:'auto'}}>
         <Grid item xs={12} sm={10} md={8} lg={6} xl={4} >
@@ -99,8 +124,13 @@ const SignIn = ()=> {
                     <TextField name="password" fullWidth type="password" variant="outlined"  className={classes.form} value={password} onChange={(e) => setPassword(e.target.value)} />
                   </Grid>
                   <Grid item xs={12}>
-                    <Button className={classes.button}>
+                    <Button onClick={signInWithEmail} className={classes.button}>
                       Sign in
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button onClick={SignUp} className={classes.button}>
+                      sign up 
                     </Button>
                   </Grid>
 
@@ -114,5 +144,6 @@ const SignIn = ()=> {
       </Grid>
     )
 }
+
 
 export default SignIn ;
