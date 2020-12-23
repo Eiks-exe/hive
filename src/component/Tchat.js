@@ -34,6 +34,9 @@ const ChatRoom = () => {
           photoURL = user.photoURL
           name = user.displayName
           email= user.email
+        } else {
+          uid = 'queenbee'
+
         }
         if (formValue.trim() !== '' ){
           await messagesRef.add({
@@ -75,22 +78,23 @@ const ChatRoom = () => {
     )
 }
 function ChatMessage(props){
-    const {text , uid, name} = props.msgcontent
+    var {text , uid, name, email} = props.msgcontent ;
+    if (email){
+      var nmail = email.split('@hive.bee') || undefined;
+      var pseudo = nmail[0];
+    }
+    
+    if(uid != null){
+      
+    }
     const messageClass = uid === auth.currentUser.uid? 'sent' : 'received';
     const messageClass2 = uid === auth.currentUser.uid? 'you' : 'theOthers';  
-    
-  
-    
-  
-  
-  
     return (
         <div className={` msgcontent m-0 ${messageClass}`} >
           <div className={` msgcontent ${messageClass2}`} >
             <div className="font-weight-bold font-italic">
-              {name} 
+              {name? name : pseudo } 
             </div>
-            
             <p style={{marginBottom: '0px' , textAlign: 'center'}}>{text}</p>
           </div>
         </div>
