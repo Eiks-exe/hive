@@ -73,7 +73,7 @@ function App() {
 function SignOut() {
   const classes = useStyles();
   return auth.currentUser && (
-    <header className="">
+    <header className="header">
       <Button varient="" onClick={() => auth.signOut()} className={classes.button}><AiOutlineLogout/> Sign Out</Button>
     </header>
   )
@@ -86,7 +86,7 @@ function Visit(){
   } 
   return(
     <Box>
-      {user && <Tech/>}
+      {user? null : <Button onClick={Tech}>test</Button> }
     </Box>
   )
 }
