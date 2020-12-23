@@ -6,6 +6,7 @@ import 'firebase/firebase-auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
+import { Button } from '@material-ui/core';
 
 
 
@@ -18,7 +19,7 @@ const ChatRoom = () => {
     const messagesRef = firestore.collection("Messages")
     const query = messagesRef.orderBy('createdAt' ,'desc').limit(25);
     const [messages] = useCollectionData(query, { idField: 'id'});
-    const Cmessages = messages ;
+    const Cmessages = [...messages] ;
     const [formValue, setFormValue] = useState('');
 
     
@@ -53,7 +54,7 @@ const ChatRoom = () => {
         }      
         
     }
-    Cmessages && Cmessages.reverse()
+  Cmessages && Cmessages.reverse()
    
     return (
       <div className="col-sm-12  p-0" style={{maxHeight : '90vh' , minHeight : '87vh'}}>
@@ -66,9 +67,9 @@ const ChatRoom = () => {
           <form onSubmit={sendMessage} className="pt-4">
             <input type="text"  placeholder="enter a message" className="formeiks ml-1" value={formValue} style={{outline : 0 }} onChange={(e) => setFormValue(e.target.value)}/>
   
-            <button type="submit" className="send ml-3" style={{outline : 0 }}>
+            <Button type="submit" className="send ml-3" style={{outline : 0 }}>
               <AiOutlineSend/>
-            </button>
+            </Button>
         
           </form>
         </div>
