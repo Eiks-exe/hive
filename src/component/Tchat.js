@@ -6,9 +6,46 @@ import 'firebase/firebase-auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-import { Button } from '@material-ui/core';
+import { Box, Button, Grid, makeStyles, TextField } from '@material-ui/core';
 
+const useStyle = makeStyles({
+  root:{
 
+  },
+  tchat:{
+    padding: '10px',
+    paddingBottom: '40px',
+    minHeight:'87vh',
+    height:'100px',
+    overflowY : 'scroll',
+    display:'flex',
+    flexDirection:'column',
+    background: 'linear-gradient(45deg, #F0D050 30%, #FF8E53 90%)',
+    
+    '&::-webkit-scrollbar': {
+      width: '0.5em'
+    },
+    '&::-webkit-scrollbar-track': {
+      background:'black',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background:'yellow',
+    },
+  },
+  inputAera:{
+    background:'black',
+    display:'flex',
+    flexDirection:'column',
+    
+  },
+  textField:{
+    background:'pink',
+    color:'black',
+  },
+  button : {
+
+  }
+})
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
@@ -20,7 +57,7 @@ const ChatRoom = () => {
     const query = messagesRef.orderBy('createdAt').limitToLast(25);
     const [messages] = useCollectionData(query, { idField: 'id'});
     const [formValue, setFormValue] = useState('');
-
+    const classes = useStyle()
     
     
     const sendMessage = async(e) => {
@@ -34,9 +71,6 @@ const ChatRoom = () => {
           photoURL = user.photoURL
           name = user.displayName
           email= user.email
-        } else {
-          uid = 'queenbee'
-
         }
         if (formValue.trim() !== '' ){
           await messagesRef.add({
@@ -56,25 +90,24 @@ const ChatRoom = () => {
   
    
     return (
-      <div className="col-sm-12  p-0" style={{maxHeight : '90vh' , minHeight : '87vh'}}>
-        <main className="tchatbox">
-          
+      <Grid item xs={12} sm={0} md={0} lg={8} direction='column' justify='center'>
+        <Grid item className={classes.tchat}>
           {messages && messages.map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
-          <div ref={dummy}></div>
-        </main>
-        <div className="row formex">
-          <form onSubmit={sendMessage} className="pt-4">
-            <input type="text"  placeholder="enter a message" className="formeiks ml-1" value={formValue} style={{outline : 0 }} onChange={(e) => setFormValue(e.target.value)}/>
+          <Box ref={dummy}></Box>
+        </Grid>
+        <Grid className>
+          <form lg={12} onSubmit={sendMessage} className={classes.inputAera}>
+            <TextField type="text"  placeholder="enter a message" className={classes.textField} value={formValue} style={{outline : 0 }} onChange={(e) => setFormValue(e.target.value)}/>
   
-            <Button type="submit" className="send ml-3" style={{outline : 0 }}>
+            <Button type="submit" className style={{outline : 0 }}>
               <AiOutlineSend/>
             </Button>
         
           </form>
-        </div>
+        </Grid>
         
        
-      </div>
+      </Grid>
     )
 }
 function ChatMessage(props){

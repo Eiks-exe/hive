@@ -98,7 +98,7 @@ const SignIn = ()=> {
    }
   
     return (
-      <Grid container justify='center' style={{margin:'auto'}}>
+      <Grid container justify='center'>
         <Grid item xs={12} sm={10} md={8} lg={6} xl={4} >
         <Card className={classes.root}>
           <CardContent className={classes.content}>

@@ -30,13 +30,17 @@ if (!firebase.apps.length) {
 }
 
 const useStyles = makeStyles({
+  body:{
+    minHeight:'100vh',
+    background: '#212F42',
+  },
   root: {
     background: '#212F42',
     color: 'white',
-    minHeight : '100vh' ,
+    minHeight : '87vh' ,
     display: 'flex',
-    flexDirection :"column"
-    
+    flexDirection :"column",
+    justifyContent:'center',
   },
   header: {
     background : '#1E1E18',
@@ -64,14 +68,16 @@ function App() {
   const urlParam = new URLSearchParams(queryString);
   
   return (
-    <Box className={classes.root}>
+    <Box className={classes.body}>
       <Grid boxShadow={3}  className={classes.header}>
         <SignOut/>
       </Grid>
-      <Grid>
-        {user? <ChatRoom/> : <SignIn/>}
-        {urlParam.has('test') && <Visit/>}
-      </Grid>
+      <Box className={classes.root}>
+        <Grid container justify="center">
+          {user? <ChatRoom/> : <SignIn/>}
+          {urlParam.has('test') && <Visit/>}
+        </Grid>
+      </Box>
     </Box>
     
   );
@@ -80,7 +86,7 @@ function App() {
 function SignOut() {
   const classes = useStyles();
   return auth.currentUser && (
-      <Button varient="" onClick={() => auth.signOut()} className={classes.button}><AiOutlineLogout/> Sign Out</Button>
+      <Button varient="" onClick={() => auth.signOut()} className={classes.button}><AiOutlineLogout/>  Sign Out</Button>
   )
 }
 
