@@ -6,11 +6,12 @@ import 'firebase/firebase-auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-import { Box, Button, Grid, makeStyles, TextField } from '@material-ui/core';
-
+import { Box, Button, Grid, makeStyles } from '@material-ui/core';
+import MenuX from './Menu'
+import AccountBoxRoundedIcon from '@material-ui/icons/AccountBoxRounded';
 const useStyle = makeStyles({
   root:{
-
+    margin:'100px',
   },
   tchat:{
     padding: '10px',
@@ -32,18 +33,46 @@ const useStyle = makeStyles({
       background:'yellow',
     },
   },
-  inputAera:{
+  menuBar:{
+    height:"3.5rem",
     background:'black',
-    display:'flex',
-    flexDirection:'column',
-    
+    borderTopLeftRadius:"15px",
+    borderTopRightRadius:"15px",
+    color:'white',
+  },
+  inputAera:{
+    background:'rgb(58, 58, 58)',
+    display:"flex",
+    borderBottomLeftRadius:"15px",
+    borderBottomRightRadius:"15px",
+    paddingLeft:"10px",
   },
   textField:{
-    background:'pink',
-    color:'black',
+    background:'rgb(58, 58, 58)',
+    color:'white',
+    display:"flex",
+    width:"90%",
+    height:"3.5rem",
+    border:"none",
+    borderBottomLeftRadius:"15px",
+    '&:hover':{
+      outline:'none',
+      
+    },
+    '&:focus':{
+      outline:'none',
+    }
+
   },
   button : {
-
+    width:'10%',
+    color :'white',
+    fontSize :'20px',
+    borderRadius:'0',
+    borderBottomRightRadius:"15px",
+    '&:focus':{
+      outline:'none',
+  }
   }
 })
 
@@ -90,20 +119,27 @@ const ChatRoom = () => {
   
    
     return (
-      <Grid item xs={12} sm={0} md={0} lg={8} direction='column' justify='center'>
+      <Grid item xs={12} sm={0} md={0} lg={8} direction='column' alignItems="center" justify='center' className={classes.root2}>
+        <Grid item className={classes.menuBar}>
+          <Grid>
+            <MenuX/>
+          </Grid>
+          <Grid>
+            <AccountBoxRoundedIcon/>
+          </Grid>
+        </Grid>
         <Grid item className={classes.tchat}>
           {messages && messages.map(msg => <ChatMessage key={msg.id} msgcontent={msg}/>)}
           <Box ref={dummy}></Box>
         </Grid>
-        <Grid className>
-          <form lg={12} onSubmit={sendMessage} className={classes.inputAera}>
-            <TextField type="text"  placeholder="enter a message" className={classes.textField} value={formValue} style={{outline : 0 }} onChange={(e) => setFormValue(e.target.value)}/>
-  
-            <Button type="submit" className style={{outline : 0 }}>
+        <Grid  direction='row' item justify="center" alignItems="center" className>
+          <form onSubmit={sendMessage} className={classes.inputAera}>
+            <input  type="text"   placeholder="enter a message" className={classes.textField} value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
+            <Button variant="primary" type="submit" className={classes.button}>
               <AiOutlineSend/>
             </Button>
-        
           </form>
+          
         </Grid>
         
        
@@ -133,5 +169,4 @@ function ChatMessage(props){
         </div>
     )
   }
-
-export default ChatRoom
+export default ChatRoom;

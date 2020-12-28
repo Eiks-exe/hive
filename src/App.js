@@ -1,5 +1,4 @@
 import './App.css';
-import {  AiOutlineLogout } from 'react-icons/ai';
 
 import React from 'react';
 import SignIn  from './component/signIn';
@@ -39,21 +38,16 @@ const useStyles = makeStyles({
     color: 'white',
     minHeight : '87vh' ,
     display: 'flex',
-    flexDirection :"column",
-    justifyContent:'center',
   },
+  root2:{
+    display:'flex',
+    marginTop:'1.5rem'
+  },
+
   header: {
     background : '#1E1E18',
   },
-  button :{
-    background : 'linear-gradient(45deg, #F0D050 30%, #FF8E53 90%)',
-    margin :'1rem',
-    '&:hover' : {
-      background : 'linear-gradient(45deg, #324764 60%, #939FA2 90%)',
-      color:'white',
-    },
-    
-  }
+  
   
 });
 
@@ -69,11 +63,8 @@ function App() {
   
   return (
     <Box className={classes.body}>
-      <Grid boxShadow={3}  className={classes.header}>
-        <SignOut/>
-      </Grid>
       <Box className={classes.root}>
-        <Grid container justify="center">
+        <Grid container lg={12} justify="center" alignItems="center" className={classes.root2}>
           {user? <ChatRoom/> : <SignIn/>}
           {urlParam.has('test') && <Visit/>}
         </Grid>
@@ -83,12 +74,7 @@ function App() {
   );
 }
 
-function SignOut() {
-  const classes = useStyles();
-  return auth.currentUser && (
-      <Button varient="" onClick={() => auth.signOut()} className={classes.button}><AiOutlineLogout/>  Sign Out</Button>
-  )
-}
+
 
 function Visit(){
   var [user] = useAuthState(auth) ;
