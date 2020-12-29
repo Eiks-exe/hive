@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 import SignIn  from './component/signIn';
 import ChatRoom from './component/Tchat';
-
+import {Profile} from './component/Profile';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
@@ -66,6 +66,7 @@ function App() {
       <Box className={classes.root}>
         <Grid container lg={12} justify="center" alignItems="center" className={classes.root2}>
           {user? <ChatRoom/> : <SignIn/>}
+          
           {urlParam.has('test') && <Visit/>}
         </Grid>
       </Box>

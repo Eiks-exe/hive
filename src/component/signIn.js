@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/firebase-auth'
 import { Button, Card, CardContent, Grid, makeStyles, TextField, Typography, Divider, List, ListItem } from '@material-ui/core';
 import { useState } from 'react';
-
+import RussoOne from '../fonts/RussoOne-Regular.ttf'
 
 
 if (!firebase.apps.length) {
@@ -19,22 +19,42 @@ if (!firebase.apps.length) {
   
   }
 
-
+const Russo = {
+  fontFamily:'RussoOne',
+  fontStyle:'normal',
+  fontDisplay:'swap',
+  fontWeight:'400',
+  src:`
+    local('RussoOne'),
+    local('Russo-Regular'),
+    url(${RussoOne}) format('ttf')
+  `,
+  unicodeRange:
+    'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF',
+};
 
 const auth = firebase.auth();
 
-const SignInStyle = makeStyles((theme) =>({
+const useStyles = makeStyles((theme) =>({
   root:{
     display: 'flex',
     alignItems:'center',
     flexDirection: 'column',
     width: '100%',
     background: 'linear-gradient(45deg, #F0D050 30%, #FF8E53 90%)',
-    fontFamily: 'Russo One, sans-serif',
+    fontFamily: 'RussoOne, sans-serif',
   },
   content :{
     width: '100%',
     padding: 0,
+    background:'',
+    fontFamily:'RussoOne'
+  },
+  content1 :{
+    width: '100%',
+    padding: 0,
+    background:'black',
+    color:'white'
   },
   textCenter: {
     margin:'auto',
@@ -53,7 +73,7 @@ const SignInStyle = makeStyles((theme) =>({
 }));
 
 const SignIn = ()=> {
-  const classes = SignInStyle()
+  const classes = useStyles()
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   
