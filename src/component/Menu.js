@@ -2,9 +2,9 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Card, CardActionArea, CardContent, CardMedia, Drawer, Grid, makeStyles, MenuList, TextField, Typography, withStyles } from '@material-ui/core';
+import { Card,  CardContent,  Drawer, Grid,  MenuList,  Typography, withStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import {Profile} from './Profile';
+
 
 import clsx from 'clsx';
 import {useStyles} from './Theme'

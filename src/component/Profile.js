@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid, } from '@material-ui/core';
 import {useStyles} from './Theme';
 const auth = firebase.auth();
 

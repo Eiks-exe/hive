@@ -9,9 +9,6 @@ import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import { Box, Button, Grid} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import {UserMenu} from './Menu'
 
 import {useStyles} from './Theme';

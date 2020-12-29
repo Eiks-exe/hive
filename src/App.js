@@ -3,7 +3,6 @@ import './App.css';
 import React from 'react';
 import SignIn  from './component/signIn';
 import ChatRoom from './component/Tchat';
-import {Profile} from './component/Profile';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
