@@ -2,14 +2,14 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useRef, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-import { Box, Button, Grid} from '@material-ui/core';
-import {UserMenu} from './Menu'
+import { Box, Button, Grid, Menu, MenuItem, MenuList, withStyles} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import {useStyles} from './Theme';
 import { Profile } from './Profile';
@@ -19,17 +19,79 @@ const firestore = firebase.firestore();
 
 const ChatRoom = () => {
   const classes = useStyles()
-  var profileReq = null
   
-   
+  const [openProfile,CloseProfile] = useState(null)
+  
+  function UserMenu() {
+    const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+      
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    const StyledMenu = withStyles({
+        paper: {
+         
+          backgroundColor: "rgb(58,58,58)"
+        }
+      })((props) => (
+        <Menu
+          elevation={0}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "left"
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right"
+          }}
+          {...props}
+        />
+      ));
+  
     return (
+      <Box>
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.buttonMenu}>
+          <MenuIcon className={classes.icon}/>
+        </Button>
+        <StyledMenu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+          
+        >
+        <MenuList className={classes.UserMenu}>
+            
+                    <MenuItem onClick={()=>CloseProfile(true)}>profile</MenuItem>
+                    
+                   
+                
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={() => auth.signOut()} className={classes.menu}>Logout</MenuItem>
+        </MenuList>
+        </StyledMenu>
+      </Box>
+    );
+  }
+    
+  return (
       <Grid item xs={12} sm={0} md={0} lg={8} direction='column' alignItems="center" justify='center' className={classes.root2}>
         <Grid item className={classes.menuBar}>
             <UserMenu/>
+            {openProfile && <Button className={classes.buttonProf} onClick={()=>CloseProfile(null)}> back </Button> }
+            
+            
         </Grid>
         
-        {profileReq? <Profile/> : <ChatBox/>}
-       
+        {openProfile? <Profile/> : <ChatBox/>}
+
       </Grid>
     )
 }
@@ -63,7 +125,9 @@ function ChatBox(){
     const [messages] = useCollectionData(query, { idField: 'id'});
     const [formValue, setFormValue] = useState('');
     const classes = useStyles()
-    
+    useEffect(()=>{
+      dummy.current.scrollIntoView({behavior:'smooth'});
+    }, [messages])
     
     const sendMessage = async(e) => {
         e.stopPropagation();

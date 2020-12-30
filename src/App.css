@@ -76,13 +76,12 @@
   color: white ;
   padding: 5px;
   border-radius: 5px 5px 5px;
-  display: flex;
-  align-items:center;
-  flex-direction:column;
   min-height: 20px ;
   min-width: 100px;
   margin-top: 3px ;
   margin-left: 5px ;
+  font-size: 1.4rem;
+  overflow-y: hidden;
 }
 
 .header{

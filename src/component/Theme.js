@@ -1,7 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 
 
-export const useStyles = makeStyles({
+
+export const useStyles = makeStyles((theme)=>({
     root:{
       margin:'100px',
     },
@@ -15,6 +16,7 @@ export const useStyles = makeStyles({
       display:'flex',
       flexDirection:'column',
       background: 'linear-gradient(45deg, #F0D050 30%, #FF8E53 90%)',
+      
       
       '&::-webkit-scrollbar': {
         width: '0.5em'
@@ -124,6 +126,28 @@ export const useStyles = makeStyles({
         margin:'1rem',
         display:'flex',
         justifyContent:'center',
-        
-    }
-  })
+    },
+    sent:{
+      display:'flex',
+      alignItems:'flex-end',
+      flexDirection:'column',
+      
+    },
+    you:{
+      background:'yellow',
+      color:'black'
+    },
+    profile:{
+      display:'flex',
+      justifyContent:'space-between',
+      flexDirection:'column',
+      margin:'auto',
+      alignItems:'center',
+      maxHeight:'100%',
+      minHeight:'400px',    
+    },
+    avatarProfile:{
+      width: theme.spacing(15),
+      height: theme.spacing(15),
+    },
+  }));
