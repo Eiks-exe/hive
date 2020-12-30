@@ -5,13 +5,13 @@ import EditIcon from '@material-ui/icons/Edit';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/firebase-auth'
-import { useState } from 'react';
+
 import { useForm } from "react-hook-form";
 
   export const Profile = () => {
       const auth = firebase.auth()
       const classes = useStyles();
-      var user = firebase.auth().currentUser;
+      var user = auth.currentUser;
       const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
                   user.updateProfile({displayName : data.pseudo});
