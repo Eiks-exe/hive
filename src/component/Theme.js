@@ -90,10 +90,16 @@ export const useStyles = makeStyles((theme)=>({
         }
     },
     buttonProf:{
-        background:'rgb(58, 58, 58)',
+        background:'black',
+        borderRadius:'0',
+        borderLeft:'solid 1px rgb(58, 58, 58)',
+        borderRight:'solid 1px rgb(58, 58, 58)',
+        borderTop:'solid 1px rgb(58, 58, 58)',
+        borderTopLeftRadius:"15px",
+        borderTopRightRadius:"15px",
         color:'white',
         '&:hover':{
-            background:'black',
+            background:'rgb(58, 58, 58)',
         },
         '&:focus':{
             outline:'none',

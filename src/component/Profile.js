@@ -23,7 +23,7 @@ import { useForm } from "react-hook-form";
             <Grid>
               <Typography variant='h4' color="black">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <Input name="pseudo" defaultValue={user.email.split('@hive.bee')[0]} label="Standard" inputRef={register} />
+                  <Input name="pseudo" defaultValue={user.displayName? user.displayName : user.email.split('@hive.bee')[0]} label="Standard" inputRef={register} />
                   <EditIcon onClick={handleSubmit(onSubmit)}/>
                 </form>
               </Typography>
