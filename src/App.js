@@ -11,18 +11,18 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 
 import  Button  from "@material-ui/core/Button";
 import { Grid, makeStyles, Box} from '@material-ui/core';
-
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: "AIzaSyDTWBteXw0tA7hZ0OQCJmzl8q_6lcK18Jc",
-    authDomain: "hive-db3b9.firebaseapp.com",
-    projectId: "hive-db3b9",
-    storageBucket: "hive-db3b9.appspot.com",
-    messagingSenderId: "306107300911",
-    appId: "1:306107300911:web:42ab214d27d522768bdada",
-    measurementId: "G-H9W71X85WS"
+    apiKey: process.env.FB_API_KEY,
+    authDomain: process.env.FB_AUTHDOM,
+    projectId: process.env.FB_PROJECTID,
+    storageBucket: process.env.FB_STORAGE_BUCKET,
+    messagingSenderId: process.env.FB_SENDERID,
+    appId: process.env.FB_APPID,
+    measurementId: process.env.FB_MEASUREMENTID
   })
 
 }
